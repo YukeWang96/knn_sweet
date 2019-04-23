@@ -21,3 +21,8 @@ Our Paper is in submission...
 	
 [1]:http://research.csc.ncsu.edu/nc-caps/gchen11/index.html
 [2]:http://nichol.as/papers/Garcia/Fast%20k%20nearest%20neighbor%20search%20using.pdf
+
+
+/usr/local/cuda-9.0/include/cublas.h
+/usr/local/cuda-10.0/targets/x86_64-linux/include/cublas.h
+
