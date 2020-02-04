@@ -1140,9 +1140,9 @@ int main(int argc, char *argv[]){
 	else
 		cudaMemcpy(knearest_h, knearest, query_nb * K * sizeof(IndexDist),cudaMemcpyDeviceToHost);
 	
-	int i = 100;
-		for(int j=0;j<K;j++)
-			printf("i,k %d %d  %d %f\n",i,j, knearest_h[i*K+j].index,knearest_h[i*K+j].dist);
+	// int i = 100;
+	// 	for(int j=0;j<K;j++)
+	// 		printf("i,k %d %d  %d %f\n",i,j, knearest_h[i*K+j].index,knearest_h[i*K+j].dist);
 	/*
 	for(int i =0 ;i < 1000;i++)
 		for(int j=0;j<K;j++)
