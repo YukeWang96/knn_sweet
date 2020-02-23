@@ -1,0 +1,18 @@
+./include/common8.h(77): error: calling a __device__ function("__hgt") from a __host__ function("operator()") is not allowed
+
+./include/common8.h(83): error: calling a __device__ function("operator<") from a __host__ function("operator()") is not allowed
+
+./include/common8.h(226): error: calling a __device__ function("operator-") from a __host__ __device__ function("Edistance") is not allowed
+
+./include/common8.h(227): error: calling a __device__ function("operator*") from a __host__ __device__ function("Edistance") is not allowed
+
+./include/common8.h(227): error: calling a __device__ function("operator+=") from a __host__ __device__ function("Edistance") is not allowed
+
+./include/common8.h(229): error: calling a __device__ function("hsqrt") from a __host__ __device__ function("Edistance") is not allowed
+
+./include/common8.h(254): error: calling a __device__ function("operator+=") from a __host__ function("selectReps") is not allowed
+
+./include/common8.h(266): error: calling a __device__ function("operator<") from a __host__ function("selectReps") is not allowed
+
+8 errors detected in the compilation of "/tmp/tmpxft_000009ef_00000000-4_knnjoin.cpp4.ii".
+make: *** [knnjoin] Error 2
