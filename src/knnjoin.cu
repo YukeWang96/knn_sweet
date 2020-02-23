@@ -426,23 +426,14 @@ void clusterReps(__half * &queries_dev,
 		if(rep2s_static[i].npoints > 0){
 
 			vector<IndexDist> temp;
-			printf("hello-----\n");
 			temp.resize(rep2s_static[i].npoints);
-			printf("hello22222222222222222222\n");
-
-			// cudaMemcpy(&temp[0],rep2s_dyn_p[i].sortedmembers, rep2s_static[i].npoints * sizeof(IndexDist), cudaMemcpyDeviceToHost);
+			cudaMemcpy(&temp[0],rep2s_dyn_p[i].sortedmembers, rep2s_static[i].npoints * sizeof(IndexDist), cudaMemcpyDeviceToHost);
 			print_last_error();
 
 			sort(temp.begin(),temp.end(),sort_inc());
-			printf("hello333333333333333333333333\n");
-
-			// printf("here\n");
-
 			//rep2s_static[i].maxdist = temp[rep2s_static[i].npoints-1].dist;
 			//rep2s_static[i].mindist = temp[0].dist;
 			cudaMemcpy(rep2s_dyn_p[i].sortedmembers, &temp[0], rep2s_static[i].npoints * sizeof(IndexDist), cudaMemcpyHostToDevice);
-
-			print_last_error();
 #if debug
 			cout<<"max "<<rep2qs_static[i].maxsource<<" min: "<<rep2qs_static[i].minsource<<" Qpoints:"<<rep2qs_static[i].noqueries<<" Spoints:"<<rep2qs_static[i].nosources<<endl;
 #endif
@@ -1080,6 +1071,7 @@ int main(int argc, char *argv[]){
 
 	R2all_dyn_p *rep2q_dyn_p = (R2all_dyn_p *)malloc(qrep_nb * sizeof(R2all_dyn_p));
 	R2all_dyn_p *rep2s_dyn_p = (R2all_dyn_p *)malloc(srep_nb * sizeof(R2all_dyn_p));
+
 	//Select reps
 	timePoint(t1);
 	//selectReps(queries, query_nb, qreps, qrep_nb);
@@ -1119,9 +1111,7 @@ int main(int argc, char *argv[]){
 											q2rep_dev, s2rep_dev, rep2q_static_dev, rep2q_dyn_p_dev, rep2s_static_dev, rep2s_dyn_p_dev, \
 											query_nb, source_nb, qrep_nb, srep_nb, dim, K);
 						
-					
-
-
+											
 	struct timespec sort_start, sort_end;
 	timePoint(sort_start);	
 	cudaMemcpy(rep2q_static, rep2q_static_dev, qrep_nb * sizeof(R2all_static_dev), cudaMemcpyDeviceToHost);
